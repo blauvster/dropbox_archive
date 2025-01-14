@@ -12,10 +12,15 @@ Install Python 3 and pip on your system.
 There are scripts in the *windows_scripts* and *linux_scripts* directory to setup a virtual environment and schedule the script with tasksheduler or cron.
 
 ### Usage
-Download this repository.
-Login and create an app on Dropbox to use with this script. https://www.dropbox.com/developers/apps
+Download the repository.
+
+Login and create an app on Dropbox to use with this script. 
+https://www.dropbox.com/developers/apps
+
 Copy *settings.py.example* as *settings.py*.
+
 Update *settings.py* to suit your needs. Replace all **REPLACE ME** instances.
+
 Then call main.py
 ```bash
 python3 main.py
