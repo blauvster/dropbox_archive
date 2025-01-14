@@ -8,8 +8,8 @@ The script currently keeps:
  - 1 file per year for files older than a year.
 
 ### Installation
-Install Python 3 and pip installed on your system.  
-There are scripts in the *windows_scripts* and *linux_scripts* directory to setup a virtual environment and schedule the script to run.
+Install Python 3 and pip on your system.  
+There are scripts in the *windows_scripts* and *linux_scripts* directory to setup a virtual environment and schedule the script with tasksheduler or cron.
 
 ### Usage
 Download this repository.
