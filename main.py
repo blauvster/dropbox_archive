@@ -40,20 +40,26 @@ def manage_backups(dropbox_client, dropbox_folder):
     daily_cutoff = datetime.now() - timedelta(days=7)
     monthly_cutoff = datetime.now() - timedelta(days=365)
 
-    keep = set()
+    keep = list()
     for backup in backups:
         modified = backup.client_modified
 
         if modified >= daily_cutoff:
-            keep.add(backup.id)
+            keep.append(backup)
         elif modified >= monthly_cutoff:
             month_key = modified.strftime("%Y-%m")
             if month_key not in {f.client_modified.strftime("%Y-%m") for f in keep}:
-                keep.add(backup.id)
+                keep.append(backup)
         else:
             year_key = modified.strftime("%Y")
             if year_key not in {f.client_modified.strftime("%Y") for f in keep}:
-                keep.add(backup.id)
+                keep.append(backup)
+
+    # Delete backups that are not in the keep set
+    for backup in backups:
+        if backup not in keep:  # Now checking full object
+            print(f"Deleting old backup: {backup.name}")
+            dropbox_client.files_delete_v2(backup.path_lower)
 
 
 def main():
